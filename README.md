@@ -21,15 +21,17 @@ You can find all of them in [Marv's Yomitan Dictionaries Github page](https://gi
 - 素材辞典 (*Kaishi with images*)
 - 日本語文法辞典(全集) (*DOJG Dictionary*)
 - Pixiv Light
+
 ![](./images/jp.png)
 ---------------------------------------------------------------------------------
 ### 🇺🇸 English
 #### Frequency List
 - yzk-freq-en-v3
 #### Grammar
-- kty-en-en
+- kty-en-en - ***Main***
 - MacMillan + IPA-v3
 - New Oxford American Dict Yomi-v3
+
 ![](./images/en.png)
 
 ## Anki Card Types
