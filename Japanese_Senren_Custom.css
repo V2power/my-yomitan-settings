@@ -1,10 +1,124 @@
-:root[data-theme="dark"] {
-  --background-color: #101010;
+/* Colored Pitch Accent v1.2
+   --made by koiyakiya
+   --inspired by ren (senren)'s code
+   *Do note this will highlight the word according
+   to the first entry in the first pitch dictionary
+   that you have displayed. There is no better way to do this
+   without modifying Yomitan's internal code (Javascript).*
+*/
+
+:root {
+    --atamadaka-color: #F5436D;
+    --heiban-color: #39C1FF;
+    --nakadaka-color: #fca311;
+    --odaka-color: #40D4A6;
+}
+
+/* Atamadaka highlighting for headword */
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="1"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="1"]) .headword-term {
+    color: var(--atamadaka-color);
+    --headword-current-kanji-border-color: var(--atamadaka-color);
+}
+/* Atamadaka highlighting for border top on pronunciation list */
+.pronunciation[data-pitch-accent-downstep-position="1"] {
+    --pronunciation-annotation-color: var(--atamadaka-color);
+}
+/* Heiban */
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="0"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="0"]) .headword-term {
+    color: var(--heiban-color);
+    --headword-current-kanji-border-color: var(--heiban-color);
+}
+.pronunciation[data-pitch-accent-downstep-position="0"] {
+    --pronunciation-annotation-color: var(--heiban-color);
+}
+/* End Heiban */
+
+/* Kifuku Section */
+
+/* Everything will be initially colored as nakadaka if in the kifuku category */
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="2"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="2"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="3"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="3"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="4"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="4"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="5"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="5"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="6"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="6"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="7"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="7"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="8"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="8"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="9"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="9"]) .headword-term,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="10"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child[data-pitch-accent-downstep-position="10"]) .headword-term {
+	color: var(--nakadaka-color);
+    --headword-current-kanji-border-color: var(--nakadaka-color);
+}
+
+.pronunciation[data-pitch-accent-downstep-position="2"],
+.pronunciation[data-pitch-accent-downstep-position="3"],
+.pronunciation[data-pitch-accent-downstep-position="4"],
+.pronunciation[data-pitch-accent-downstep-position="5"],
+.pronunciation[data-pitch-accent-downstep-position="6"],
+.pronunciation[data-pitch-accent-downstep-position="7"],
+.pronunciation[data-pitch-accent-downstep-position="8"],
+.pronunciation[data-pitch-accent-downstep-position="9"],
+.pronunciation[data-pitch-accent-downstep-position="10"] {
+    --pronunciation-annotation-color: var(--nakadaka-color);
+}
+
+/* End nakadaka */
+
+/* Now, we check manually if the first entry in the first pitch accent dict
+   is odaka 尾高 */
+
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child .pronunciation-mora:last-child[data-pitch="high"][data-pitch-next="low"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child .pronunciation-mora:last-child[data-pitch="high"][data-pitch-next="low"]) .headword-term {
+    color: var(--odaka-color) !important;
+    --headword-current-kanji-border-color: var(--odaka-color) !important;
+}
+.pronunciation:has(.pronunciation-mora:last-child[data-pitch="high"][data-pitch-next="low"]) {
+    --pronunciation-annotation-color: var(--odaka-color) !important;
+}
+
+/* End kifuku */
+
+/* Check if word only has one mora */
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child .pronunciation-mora:last-child[data-position="0"][data-pitch="high"][data-pitch-next="low"]) .headword-term *,
+.entry:has(.pronunciation-group:first-child .pronunciation-list li:first-child .pronunciation-mora:last-child[data-position="0"][data-pitch="high"][data-pitch-next="low"]) .headword-term {
+    color: var(--atamadaka-color) !important;
+    --headword-current-kanji-border-color: var(--atamadaka-color) !important;
+}
+.pronunciation:has(.pronunciation-mora:last-child[data-position="0"][data-pitch="high"][data-pitch-next="low"]) {
+    --pronunciation-annotation-color: var(--atamadaka-color) !important;
+}
+
+/* Increase border top width to make it look nicer */
+.pronunciation-mora[data-pitch=high]>.pronunciation-mora-line {
+    border-top-width: 0.15em;
+}
+
+/* Colored Pitch Accent 終わり */
+/* Firefox specific fix for furigana alignment (Remove this rule if not using Firefox) */
+.headword ruby>* {
+  margin-top: -3px;
+  margin-bottom: -10px;
+}
+
+:root[data-theme="light"] {
+  --background-color: #f5f5f5;
   --dict-color-opacity: 100%;
   --dict-color: var(--tag-dictionary-background-color);
   --dict-bg-opacity: 0;
+  --example-keyword: #E20033;
   --tag-text-color: white;
-  --tag-border-color: transparent --tag-default-background-color: rgba(0, 0, 0, 0.4);
+  --tag-border-color: transparent;
+  --tag-default-background-color: rgba(0, 0, 0, 0.08);
   --tag-name-background-color: #88C0D0;
   --tag-expression-background-color: #88C0D0;
   --tag-archaism-background-color: #88C0D0;
@@ -13,6 +127,60 @@
   --tag-part-of-speech-background-color: #88C0D0;
   --tag-search-background-color: #88C0D0;
   --tag-pitch-accent-dictionary-background-color: #5E81AC;
+  --jitendex-separators: rgba(105, 105, 105, 0.3);
+  --text-color: #2e3440;
+  --pitch-accent-annotation-color: #4c566a;
+  --reason-text-color: #5E81AC;
+  --notification-text-color: #2e3440;
+  --notification-background-color: #e5e9f0;
+  --progress-bar-track-color: #4c566a;
+  --sidebar-background-color: #eceff4;
+  --sidebar-button-background-color: transparent;
+  --sidebar-button-background-color-hover: #d8dee9;
+  --sidebar-button-background-color-active: #c8ced9;
+  --sidebar-button-danger-background-color: transparent;
+  --sidebar-button-danger-background-color-hover: #bf616a;
+  --sidebar-button-danger-background-color-active: #a54f58;
+  --sidebar-button-icon-color: #4c566a;
+  --sidebar-button-disabled-icon-color: #abb2bf;
+  --sidebar-button-danger-icon-color: #4c566a;
+  --list-padding1: 0;
+
+  /* Marked Mora */
+  --devoiced-color: RoyalBlue;
+  --nasal-color: #d03e2d;
+
+  /* Pitch Accent Colors (Slightly darkened for light mode legibility) */
+  --pitch-red: #D62839;
+  --pitch-blue: #3474FF;
+  --pitch-orange: #FF6E03;
+  --pitch-green: #2BAF7E;
+  --pitch-purple: #8A5EDE;
+  --pitch-background: rgba(255, 255, 255, 0.8);
+
+  /* Fonts */
+  --font-sans: Zen Kaku Gothic New Medium, Klee One SemiBold, Noto Sans JP;
+  --font-serif: Source Han Serif SemiBold, Noto Serif JP, Zen Antique Soft;
+}
+
+:root[data-theme="dark"] {
+  --background-color: #101010;
+  --dict-color-opacity: 100%;
+  --dict-color: var(--tag-dictionary-background-color);
+  --dict-bg-opacity: 0;
+  --example-keyword: #FCFF61;
+  --tag-text-color: white;
+  --tag-border-color: transparent;
+  --tag-default-background-color: rgba(0, 0, 0, 0.4);
+  --tag-name-background-color: #88C0D0;
+  --tag-expression-background-color: #88C0D0;
+  --tag-archaism-background-color: #88C0D0;
+  --tag-dictionary-background-color: #8FBCBB;
+  --tag-frequency-background-color: #81A1C1;
+  --tag-part-of-speech-background-color: #88C0D0;
+  --tag-search-background-color: #88C0D0;
+  --tag-pitch-accent-dictionary-background-color: #5E81AC;
+  --jitendex-separators: rgba(255, 255, 255, 0.5);
   --text-color: white;
   --pitch-accent-annotation-color: #ebffff;
   --reason-text-color: #5E81AC;
@@ -41,16 +209,17 @@
   --pitch-orange: #fca311;
   --pitch-green: #40D4A6;
   --pitch-purple: #afa2ff;
+  --pitch-background: rgba(0, 0, 0, 0.2);
 
   /* Fonts */
-  --font-sans: Noto Sans JP;
-  --font-serif: Noto Serif JP;
+  --font-sans:  Zen Kaku Gothic New Medium;
+  --font-serif: Source Han Serif SemiBold;
 }
 
 /* Base Settings */
 body {
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .content-body {
@@ -59,7 +228,7 @@ body {
 
 .headword {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -114,6 +283,11 @@ rt.query-parser-segment-reading {
 }
 
 /* Inflections Hover */
+.inflection-rule-chains {
+  display: inline-block;
+  position: relative;
+}
+
 .inflection-source-icon,
 .inflection-rule-chains:not(:empty) li {
   display: none;
@@ -172,6 +346,16 @@ rt.query-parser-segment-reading {
   --dict-bg-opacity: 0.04;
 }
 
+.definition-item[data-dictionary="大辞泉 第二版"] {
+  --dict-color: rgb(170, 0, 0);
+  --dict-bg-opacity: 0.04;
+}
+
+.definition-item[data-dictionary*="小学館例解学習国語"] {
+  --dict-color: rgb(77, 208, 225);
+  --dict-bg-opacity: 0.04;
+}
+
 .definition-item[data-dictionary="精選版　日本国語大辞典"] {
   --dict-color: rgb(238, 238, 204);
   --dict-bg-opacity: 0.05;
@@ -225,23 +409,23 @@ rt.query-parser-segment-reading {
   --dict-bg-opacity: 0.03;
 }
 
-.definition-item[data-dictionary^="Pixiv Light"] {
-  --dict-color: rgb(176, 4, 157);
+.definition-item[data-dictionary^="Pixiv"] {
+  --dict-color: rgb(0, 151, 250);
   --dict-bg-opacity: 0.03;
 }
 
-.definition-item[data-dictionary="素材辞典"] {
+.definition-item[data-dictionary="漢字源"] {
   --dict-color: rgb(201, 149, 93);
   --dict-bg-opacity: 0.05;
 }
 
-.definition-item[data-dictionary="日本語文法辞典(全集)"] {
-  --dict-color: rgb(193, 123, 148);
+.definition-item[data-dictionary="日本語俗語辞書"] {
+  --dict-color: rgb(176, 4, 157);
   --dict-bg-opacity: 0.05;
 }
 
 .definition-item[data-dictionary="weblio古語辞典"] {
-  --dict-color: rgb(0, 151, 250);
+  --dict-color: rgb(193, 123, 148);
   --dict-bg-opacity: 0.05;
 }
 
@@ -264,6 +448,15 @@ rt.query-parser-segment-reading {
 .definition-item[data-dictionary^="日本語文法辞典"] {
   --dict-color: rgb(23, 59, 173);
   --dict-bg-opacity: 0.05;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] {
+  --dict-color: #1f5fd6;
+  --dict-bg-opacity: 0.04;
+}
+
+.definition-item[data-dictionary^="絵でわかる慣用句"] {
+--dict-color: #4CCFAD;
 }
 
 .definition-item[data-dictionary="絵でわかる日本語"] {
@@ -349,6 +542,16 @@ rt.query-parser-segment-reading {
   --tag-color: rgb(0, 132, 255);
 }
 
+.tag[data-category="dictionary"][data-details^="日本語文法辞典(全集)"] {
+  --tag-color: #1f5fd6;
+  --tag-text-color: white;
+}
+
+.tag[data-category="dictionary"][data-details^="JLPT文法解説まとめ"] {
+  --tag-color: rgb(244, 66, 54);
+  --tag-text-color: white;
+}
+
 /* Pitch Accent */
 .tag[data-category="pronunciation-dictionary"][data-details="NHK"] {
   --tag-color: #0076d0;
@@ -371,7 +574,7 @@ rt.query-parser-segment-reading {
   --tag-frequency-background-color: #e82c9c;
 }
 
-.frequency-group-item[data-details="Novels"] {
+.frequency-group-item[data-details="TMW v2"] {
   --tag-frequency-background-color: #e537fa;
 }
 
@@ -383,7 +586,7 @@ rt.query-parser-segment-reading {
   --tag-frequency-background-color: #6238fa;
 }
 
-.frequency-group-item[data-details="VN Freq"] {
+.frequency-group-item[data-details="Conversation Corpus"] {
   --tag-frequency-background-color: #273ce3;
 }
 
@@ -399,6 +602,14 @@ rt.query-parser-segment-reading {
   --tag-frequency-background-color: #447ff5;
 }
 
+.frequency-group-item[data-details^="Jiten"] {
+  --tag-frequency-background-color: #2e2e8e;
+}
+
+.frequency-group-item[data-details^="JLPT"] {
+  --tag-frequency-background-color: #ff8b07;
+}
+
 /* Frequency hover (average enabled) */
 [data-average-frequency="true"] [data-section-type="frequencies"]:hover .frequency-group-item:not([data-details="Average"]) {
   display: inline-block;
@@ -409,11 +620,11 @@ rt.query-parser-segment-reading {
 }
 
 /* Frequency hover (average disabled) */
-[data-average-frequency="false"] span.frequency-group-item:nth-child(n + 3) {
-  display: inline-block;
+[data-average-frequency="false"] span.frequency-group-item:nth-child(n + 4) {
+  display: none;
 }
 
-[data-average-frequency="false"] [data-section-type="frequencies"]:hover span.frequency-group-item:nth-child(n + 3):not([data-details="Average"]) {
+[data-average-frequency="false"] [data-section-type="frequencies"]:hover span.frequency-group-item:nth-child(n + 4):not([data-details="Average"]) {
   display: inline-block;
 }
 
@@ -422,9 +633,10 @@ li.pronunciation-group:first-child~* {
   display: none;
 }
 
-ol.pronunciation-group-list:hover li.pronunciation-group:first-child ~ li.pronunciation-group {
+ol.pronunciation-group-list:active li.pronunciation-group:first-child~li.pronunciation-group {
   display: inline-block;
 }
+
 
 /* Hide add duplicate */
 button.action-button[title="Add duplicate expression (Alt + E)"] {
@@ -437,7 +649,7 @@ button.action-button[title="Add reading (Alt + R)"] {
 }
 
 /* Hide tags */
-[data-category="popular"], 
+[data-category="popular"],
 [data-category="frequent"] {
   display: none;
 }
@@ -450,13 +662,29 @@ button.action-button[title="Add reading (Alt + R)"] {
   display: none;
 }
 
-/* Changes for Jitendex */
-.definition-item[data-dictionary*="Jitendex"] *[data-sc-content="tag-label-content"] {
-  font-size: 2em !important;
+/* Jitendex Settings */
+[data-glossary-layout-mode="default"] [data-sc-content="glossary"] li:not(:last-child)::after {
+  color: var(--jitendex-separators) !important;
+}
+
+[data-dictionary*="Jitendex.org"] {
+
+  li[data-sc-content="sense-group"],
+  li[data-sc-content="forms"],
+  li[data-sc-content="sense"],
+  ul[data-sc-content="glossary"] {
+    padding-left: 0 !important;
+  }
+}
+
+[data-dictionary*="Jitendex.org"] {
+  span[data-sc-class="tag"] {
+    margin-right: 0.25em !important;
+  }
 }
 
 .definition-item[data-dictionary*="Jitendex"] *[data-sc-content="example-sentence-a"] {
-  font-size: 1em !important;
+  font-size: 0.8em !important;
 }
 
 [data-glossary-layout-mode="default"] [data-sc-content="glossary"] {
@@ -472,9 +700,300 @@ button.action-button[title="Add reading (Alt + R)"] {
   margin: 0 8px;
 }
 
+/* Hide version date */
+.tag[title^="Jitendex"] .tag-label-content {
+  font-size: 0;
+}
+
+.tag[title^="Jitendex"] .tag-label-content::after {
+  content: "Jitendex";
+  font-size: 0.885rem;
+}
+
+/* DoJG Settings */
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .definition-item-content {
+  line-height: 1.55;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .definition-tag-list {
+  margin-bottom: 0.35em;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .tag[data-category="dictionary"] .tag-label-content {
+  font-size: 0;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .tag[data-category="dictionary"] .tag-label-content::after {
+  content: "DoJG";
+  font-size: 0.885rem;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-list {
+  margin: 0;
+  padding: 0;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-item {
+  list-style: none;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-separator {
+  display: none;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-content {
+  display: block;
+  border-left: 0.25em solid var(--dict-color);
+  border-radius: 0.35em;
+  padding: 0.65em 0.8em;
+  background-color: color-mix(in srgb, var(--dict-color) 7%, transparent);
+  white-space: normal;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-content::first-line {
+  color: var(--dict-color);
+  font-size: 1.08em;
+  font-weight: 700;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-content br {
+  display: block;
+  content: "";
+  margin-top: 0.35em;
+}
+
+.definition-item[data-dictionary="日本語文法辞典(全集)"] .gloss-content br + br {
+  margin-top: 0.6em;
+}
+
+/* Nihongo Kyoushi Settings */
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .definition-item-content {
+  line-height: 1.55;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .definition-tag-list {
+  margin-bottom: 0.35em;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .tag[data-category="dictionary"] .tag-label-content {
+  font-size: 0;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .tag[data-category="dictionary"] .tag-label-content::after {
+  content: "日本語教師";
+  font-size: 0.885rem;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .tag[data-category="default"] {
+  --tag-color: color-mix(in srgb, var(--dict-color) 20%, transparent);
+  --tag-text-color: var(--text-color);
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-list {
+  margin: 0;
+  padding: 0;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-item {
+  list-style: none;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-separator {
+  display: none;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-content {
+  display: block;
+  border-left: 0.25em solid var(--dict-color);
+  border-radius: 0.35em;
+  padding: 0.65em 0.8em;
+  background-color: color-mix(in srgb, var(--dict-color) 7%, transparent);
+  white-space: pre-line;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-content::first-line {
+  color: var(--dict-color);
+  font-size: 1.08em;
+  font-weight: 700;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  width: fit-content;
+  margin-top: 0.4em;
+  border-radius: 0.3em;
+  padding: 0.2em 0.4em;
+  background-color: color-mix(in srgb, var(--dict-color) 18%, transparent);
+  color: var(--dict-color) !important;
+  text-decoration: none !important;
+}
+
+.definition-item[data-dictionary="JLPT文法解説まとめ"] .gloss-link:hover {
+  background-color: color-mix(in srgb, var(--dict-color) 28%, transparent);
+}
+
+/* Dictionary subentry groups */
+.definition-tag-list .tag[data-details="子項目"],
+.definition-tag-list .tag[data-details="熟語"],
+.definition-tag-list .tag[data-details="句項目"],
+.definition-tag-list .tag[data-details="句"] {
+  --tag-color: var(--dict-color);
+  --tag-name-background-color: var(--dict-color);
+  --tag-expression-background-color: var(--dict-color);
+  --tag-text-color: white;
+  cursor: help;
+}
+
+.definition-tag-list .tag[data-details="子項目"] .tag-label-content,
+.definition-tag-list .tag[data-details="熟語"] .tag-label-content,
+.definition-tag-list .tag[data-details="句項目"] .tag-label-content,
+.definition-tag-list .tag[data-details="句"] .tag-label-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.definition-tag-list .tag[data-details="子項目"] .tag-label-content::before,
+.definition-tag-list .tag[data-details="熟語"] .tag-label-content::before,
+.definition-tag-list .tag[data-details="句項目"] .tag-label-content::before,
+.definition-tag-list .tag[data-details="句"] .tag-label-content::before {
+  content: "▶";
+  font-size: 0.75em;
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]) .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]) .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]) .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]) .gloss-list {
+  display: none;
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]):hover .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]):hover .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]):hover .gloss-list,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]):hover .gloss-list {
+  display: block;
+  margin: 0.45em 0 0;
+  padding: 0.55em 0.65em;
+  border-left: 0.25em solid var(--dict-color);
+  border-radius: 0.35em;
+  background-color: color-mix(in srgb, var(--dict-color) 7%, transparent);
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]):hover .tag[data-details="子項目"] .tag-label-content::before,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]):hover .tag[data-details="熟語"] .tag-label-content::before,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]):hover .tag[data-details="句項目"] .tag-label-content::before,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]):hover .tag[data-details="句"] .tag-label-content::before {
+  content: "▼";
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]) .gloss-list .gloss-item,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]) .gloss-list .gloss-item,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]) .gloss-list .gloss-item,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]) .gloss-list .gloss-item {
+  display: inline;
+  list-style: none;
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]) .gloss-list .gloss-separator,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]) .gloss-list .gloss-separator,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]) .gloss-list .gloss-separator,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]) .gloss-list .gloss-separator {
+  display: none;
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]) .gloss-list .gloss-link,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]) .gloss-list .gloss-link,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]) .gloss-list .gloss-link,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]) .gloss-list .gloss-link {
+  text-decoration: none;
+}
+
+.definition-item:has(.definition-tag-list .tag[data-details="子項目"]) .gloss-list .gloss-link:hover,
+.definition-item:has(.definition-tag-list .tag[data-details="熟語"]) .gloss-list .gloss-link:hover,
+.definition-item:has(.definition-tag-list .tag[data-details="句項目"]) .gloss-list .gloss-link:hover,
+.definition-item:has(.definition-tag-list .tag[data-details="句"]) .gloss-list .gloss-link:hover {
+  text-decoration: underline;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"],
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"],
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"],
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"] {
+  display: block;
+  margin-top: 0.45em;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"] > .gloss-sc-span:first-child,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"] > .gloss-sc-span:first-child,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"] > .gloss-sc-span:first-child,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"] > .gloss-sc-span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  cursor: help !important;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"] > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"] > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"] > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"] > .gloss-sc-span:first-child::before {
+  content: "▶";
+  font-size: 0.75em;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"] > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"] > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"] > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"] > .gloss-sc-span:not(:first-child) {
+  display: none;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"]:hover > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"]:hover > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"]:hover > .gloss-sc-span:not(:first-child),
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"]:hover > .gloss-sc-span:not(:first-child) {
+  display: inline;
+}
+
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="子項目"]:hover > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="熟語"]:hover > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句項目"]:hover > .gloss-sc-span:first-child::before,
+.definition-item[data-dictionary^="新選国語辞典"] [data-sc-subentries="句"]:hover > .gloss-sc-span:first-child::before {
+  content: "▼";
+}
+
+.definition-item [data-sc-class="熟語"] {
+  display: block;
+  margin-top: 0.45em;
+}
+
+.definition-item [data-sc-class="熟語"] > .gloss-sc-span:first-child {
+  display: inline-flex;
+  align-items: center;
+  cursor: help;
+}
+
+.definition-item [data-sc-class="熟語"] > .gloss-sc-span:not(:first-child) {
+  display: none;
+}
+
+.definition-item [data-sc-class="熟語"]:hover {
+  padding: 0.45em 0.6em;
+  border-left: 0.25em solid var(--dict-color);
+  border-radius: 0.35em;
+  background-color: color-mix(in srgb, var(--dict-color) 7%, transparent);
+}
+
+.definition-item [data-sc-class="熟語"]:hover > .gloss-sc-span:not(:first-child) {
+  display: inline;
+}
+
 /* Example Keyword */
 span[data-sc-content="example-keyword"] {
-  color: #FCFF61 !important;
+  color: var(--example-keyword) !important;
   text-decoration: none !important;
 }
 
@@ -521,10 +1040,6 @@ span[data-sc-content="example-keyword"] {
   opacity: 1;
 }
 
-[data-sc-content="example-sentence"] span {
-  color: #FCFF61 !important;
-}
-
 /* Hidden */
 [data-sc-content="forms"] {
   display: none;
@@ -569,8 +1084,9 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 
 .pronunciation:has(.pronunciation-downstep-notation[data-downstep-position="0"]) {
   --pronunciation-annotation-color: var(--pitch-blue);
+
   & .pronunciation-downstep-notation-number {
-     color: var(--pitch-blue);
+    color: var(--pitch-blue);
   }
 }
 
@@ -589,8 +1105,9 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 
 .pronunciation:has(.pronunciation-downstep-notation[data-downstep-position="1"]) {
   --pronunciation-annotation-color: var(--pitch-red);
+
   & .pronunciation-downstep-notation-number {
-     color: var(--pitch-red);
+    color: var(--pitch-red);
   }
 }
 
@@ -610,6 +1127,7 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 .pronunciation {
   &:has(.pronunciation-mora:not(:last-child)[data-pitch-next="low"]):has(.pronunciation-downstep-notation:not([data-downstep-position="1"])) {
     --pronunciation-annotation-color: var(--pitch-orange) !important;
+
     & .pronunciation-downstep-notation-number {
       color: var(--pitch-orange) !important;
     }
@@ -632,6 +1150,7 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 .pronunciation {
   &:has(.pronunciation-mora:last-child[data-pitch-next="low"]):not(:has(.pronunciation-downstep-notation[data-downstep-position="1"])) {
     --pronunciation-annotation-color: var(--pitch-green);
+
     & .pronunciation-downstep-notation-number {
       color: var(--pitch-green);
     }
@@ -657,7 +1176,7 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
   font-family: var(--font-sans);
   padding: 2px 5px 2px 5px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--pitch-background);
   font-size: 0.8em;
   text-align: center;
 }
@@ -669,7 +1188,7 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 
 /* Nasal Mora */
 .pronunciation-nasal-indicator {
-  border: 0.115em solid var(--nasal-color);
+  border: 0.1em solid var(--nasal-color);
   width: 0.35em;
   height: 0.35em;
   right: -0.1em;
@@ -683,4 +1202,18 @@ html:has(.entry-current .headword[data-is-primary="true"][data-pronunciation-cat
 
 .pronunciation-mora[data-devoice="true"] {
   color: var(--devoiced-color);
+}
+
+/* Format Buttons */
+.action-button-container~.action-button-container .action-button[data-action="view-note"] {
+  display: none;
+}
+
+.action-button-container[data-card-format-index="1"] .action-icon[data-icon="overwrite-big-circle"] {
+  filter: hue-rotate(180deg);
+}
+
+/* Hide Tag List */
+.headword-list-tag-list.tag-list {
+  display: none !important;
 }

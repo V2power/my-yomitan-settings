@@ -1,0 +1,606 @@
+/* Font */
+
+@font-face {
+  font-display: block;
+  font-family: "UD Digi Kyokasho NK";
+  src: local("UD Digi Kyokasho NK-R"), local("UD デジタル 教科書体 NK-R"), local("UDDigiKyokashoNK-R"), url("_UDDigiKyokashoNK.ttf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Hiragino Kaku Gothic ProN";
+  src: local("HiraginoKakuGothicProN-W3"), local("Hiragino Kaku Gothic ProN W3"), url("_HiraginoKakuGothicProN.otf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Aozora Mincho";
+  src: local("Aozora Mincho Regular"), local("AozoraMinchoRegular"), local("あおぞら明朝 Regular"), url("_AozoraMincho.ttf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "ackaisyo";
+  src: local("ackaisyo"), local("英椎楷書"), url("_ackaisyo.ttf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "MtyKjKyotai W4";
+  src: local("MtyKjKyotai W4"), local("MtyKjKyotai-W4-90msp-RKSJ-H"), local("モトヤKJ教科書4"), url("_MtyKjKyotaiW4.ttf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "FOT Telop Min Pro";
+  src: local("TelopMinPro-B"), url("_FOT-TelopMinPro-B.otf");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Yu Kyokasho";
+  src: local("YuKyo-Bold"), local("YuKyokasho Bold"), local("游教科書体 ボールド"), url("_游教科書体 B.ttf");
+  font-weight: bold;
+}
+
+ol.gloss-sc-ol > li.gloss-sc-li[data-sc-content="sense"] > ul.gloss-sc-ul[data-sc-content="glossary"] {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+ol.gloss-sc-ol > li.gloss-sc-li[data-sc-content="sense"] > ul.gloss-sc-ul[data-sc-content="glossary"] > li.gloss-sc-li {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+ol.gloss-sc-ol > li.gloss-sc-li[data-sc-content="sense"] > ul.gloss-sc-ul[data-sc-content="glossary"] > li.gloss-sc-li + li.gloss-sc-li::before {
+    content: " | ";
+    color: rgba(255, 255, 255, 0.5);
+}
+
+[data-sc-content="example-sentence-a"],
+[data-sc-content="xref-content"],
+[data-sc-content="sense-note"],
+[data-sc-content="antonym"] {
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+[data-sc-content="example-sentence-a"]:hover,
+[data-sc-content="xref-content"]:hover,
+[data-sc-content="sense-note"]:hover,
+[data-sc-content="antonym"]:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+[data-sc-content="sense-note-label"], [data-sc-content="reference-label"] {
+    font-size: 0.8em !important;
+}
+
+[data-sc-content="example-sentence-a"],
+[data-sc-content="antonym-content"],
+[data-sc-content="xref-content"],
+[data-sc-content="info-gloss"],
+[data-sc-content="sense-note"]{
+  font-size: 0.8em !important;
+}
+
+[data-sc-content="example-sentence-b"],
+[data-sc-content="xref-glossary"] {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.4s ease;
+  /* Collapse height initially */
+  overflow: hidden;
+  /* Hide overflow */
+    font-size: 0.65em !important;
+}
+
+[data-sc-content="example-sentence-a"]:hover+[data-sc-content="example-sentence-b"] {
+  opacity: 1;
+  display: block;
+  margin-left: 2px;
+}
+
+[data-sc-content="xref-content"]:hover+[data-sc-content="xref-glossary"] {
+  opacity: 1;
+  display: block;
+  margin-left: 2px;
+}
+
+[data-sc-content="example-sentence-b"]:hover [data-sc-content|="example-sentence"] {
+  opacity: 1;
+}
+
+[data-sc-content="xref-glossary"]:hover [data-sc-content|="xref-content"]{
+    opacity: 1;
+}
+
+
+[data-sc-content="example-sentence"] rt {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+
+[data-sc-content="example-sentence"]:hover rt {
+  opacity: 1;
+}
+
+li[data-dictionary] i:first-of-type {
+    color: var(--color-secondary);
+}
+
+/* Seleciona apenas os LIs que têm o atributo data-dictionary */
+li[data-dictionary] {
+    padding-bottom: 8px;          /* Espaço entre o texto e a linha */
+    margin-bottom: 8px;           /* Espaço entre a linha e o próximo item */
+    list-style: none;              /* Remove marcad ores se houver */
+}
+
+li[data-dictionary] i:first-of-type {
+    color: var(--color-base-content-calm);
+    font-weight: 600;
+    font-size: 0.75em;
+    font-style: normal !important;
+}
+
+/* Dictionary specific */
+[data-dictionary="小学館例解学習国語 第十二版"] i {
+    background-color: rgb(255, 216, 228);
+    color: rgb(22, 22, 22) !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+span[data-sc-class="gaiji"] {
+    color: black !important;
+}
+
+[data-dictionary="新選国語辞典　第十版"] i {
+    background-color: #E5007F;
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary="新選国語辞典　第十版"] div {
+    margin-top: 0.30em;
+}
+
+[data-dictionary="明鏡国語辞典 第三版"] i {
+    background-color: #e3323a;
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary="明鏡国語辞典 第三版"] a {
+    display: none !important;
+}
+
+[data-dictionary="三省堂国語辞典　第八版"] i {
+    background-color: rgb(207, 76, 110);
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary="大辞泉 第二版"] i {
+    background-color: rgb(180, 192, 152);
+    color: rgb(22, 22, 22) !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary="素材辞典"] i {
+    background-color: rgb(201, 149, 93);
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary="日本語文法辞典(全集)"] i {
+    background-color: rgb(23, 59, 173);
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary^="Pixiv Light"] i {
+    background-color: rgb(176, 4, 157);
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+[data-dictionary^="PixivLight"] i {
+    background-color: rgb(176, 4, 157);
+    color: white !important;
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+/* Dictionary label colors copied from yomitan.css */
+.yomitan-glossary li[data-dictionary] > i:first-of-type {
+    align-items: center;
+    border-radius: 0.25em;
+    padding: 0.30em 0.30em;
+    cursor: pointer;
+}
+
+.yomitan-glossary li[data-dictionary^="旺文社国語辞典"] {
+    --kiku-dict-label-bg: rgb(187, 255, 255);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary^="明鏡国語辞典"] {
+    --kiku-dict-label-bg: rgb(51, 51, 221);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="岩波国語辞"] {
+    --kiku-dict-label-bg: rgb(51, 85, 51);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary*="新明解"] {
+    --kiku-dict-label-bg: rgb(255, 0, 0);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="大辞林"] {
+    --kiku-dict-label-bg: rgb(85, 34, 85);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="デジタル大辞泉"],
+.yomitan-glossary li[data-dictionary="大辞泉 第二版"] {
+    --kiku-dict-label-bg: rgb(170, 0, 0);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary*="小学館例解学習国語"] {
+    --kiku-dict-label-bg: rgb(77, 208, 225);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="精選版　日本国語大辞典"] {
+    --kiku-dict-label-bg: rgb(238, 238, 204);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="ハイブリッド新辞林"] {
+    --kiku-dict-label-bg: rgb(221, 221, 238);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary^="広辞苑"] {
+    --kiku-dict-label-bg: rgb(51, 51, 51);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary$="辞典オンライン"],
+.yomitan-glossary li[data-dictionary="故事・ことわざ・慣用句オンライン"] {
+    --kiku-dict-label-bg: rgb(255, 227, 124);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="実用日本語表現辞典"] {
+    --kiku-dict-label-bg: rgb(99, 108, 141);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="三省堂国語辞典"] {
+    --kiku-dict-label-bg: rgb(229, 107, 57);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="JMdict"],
+.yomitan-glossary li[data-dictionary^="JMDict"],
+.yomitan-glossary li[data-dictionary^="JMnedict"],
+.yomitan-glossary li[data-dictionary^="Jitendex"] {
+    --kiku-dict-label-bg: rgb(0, 132, 255);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="NEW斎藤和英大辞典"] {
+    --kiku-dict-label-bg: rgb(244, 225, 254);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="新和英"] {
+    --kiku-dict-label-bg: rgb(21, 70, 51);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="Pixiv"] {
+    --kiku-dict-label-bg: rgb(0, 151, 250);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="漢字源"] {
+    --kiku-dict-label-bg: rgb(201, 149, 93);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="日本語俗語辞書"] {
+    --kiku-dict-label-bg: rgb(176, 4, 157);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="weblio古語辞典"] {
+    --kiku-dict-label-bg: rgb(193, 123, 148);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="語源由来辞典"] {
+    --kiku-dict-label-bg: rgb(206, 169, 47);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="学研 四字熟語辞典"] {
+    --kiku-dict-label-bg: rgb(180, 192, 152);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="故事ことわざの辞典"] {
+    --kiku-dict-label-bg: rgb(117, 87, 85);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="日本語文法辞典"] {
+    --kiku-dict-label-bg: rgb(23, 59, 173);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="絵でわかる慣用句"] {
+    --kiku-dict-label-bg: #4CCFAD;
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="絵でわかる日本語"] {
+    --kiku-dict-label-bg: rgb(207, 76, 110);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="JLPT文法解説まとめ"] {
+    --kiku-dict-label-bg: rgb(244, 66, 54);
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="どんなときどう使う 日本語表現文型辞典"] {
+    --kiku-dict-label-bg: rgb(126, 168, 232);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary="毎日のんびり日本語教師"] {
+    --kiku-dict-label-bg: rgb(255, 216, 228);
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary^="新選国語辞典　第十版"] {
+    --kiku-dict-label-bg: #E5007F;
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="使い方の分かる 類語例解辞典"],
+.yomitan-glossary li[data-dictionary="全国方言辞典"] {
+    --kiku-dict-label-bg: #9c4836;
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="新語時事用語辞典"] {
+    --kiku-dict-label-bg: #6e9ac6;
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary="漢字ペディア同訓異義"] {
+    --kiku-dict-label-bg: #b7b7b7;
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary*="Wikipedia"] {
+    --kiku-dict-label-bg: #447ff5;
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="漢検漢字辞典"] {
+    --kiku-dict-label-bg: #e7a93a;
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary^="例解学習国語辞典"] {
+    --kiku-dict-label-bg: #faa72f;
+    --kiku-dict-label-fg: black;
+}
+
+.yomitan-glossary li[data-dictionary^="現代国語例解辞典"] {
+    --kiku-dict-label-bg: #e3323a;
+    --kiku-dict-label-fg: white;
+}
+
+.yomitan-glossary li[data-dictionary^="旺文社国語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="明鏡国語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="岩波国語辞"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary*="新明解"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="大辞林"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="デジタル大辞泉"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="大辞泉 第二版"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary*="小学館例解学習国語"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="精選版　日本国語大辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="ハイブリッド新辞林"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="広辞苑"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary$="辞典オンライン"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="故事・ことわざ・慣用句オンライン"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="実用日本語表現辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="三省堂国語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="JMdict"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="JMDict"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="JMnedict"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="Jitendex"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="NEW斎藤和英大辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="新和英"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="Pixiv"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="漢字源"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="日本語俗語辞書"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="weblio古語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="語源由来辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="学研 四字熟語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="故事ことわざの辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="日本語文法辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="絵でわかる慣用句"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="絵でわかる日本語"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="JLPT文法解説まとめ"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="どんなときどう使う 日本語表現文型辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="毎日のんびり日本語教師"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="新選国語辞典　第十版"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="使い方の分かる 類語例解辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="全国方言辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="新語時事用語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="漢字ペディア同訓異義"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary*="Wikipedia"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="漢検漢字辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="例解学習国語辞典"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary^="現代国語例解辞典"] > i:first-of-type {
+    background-color: var(--kiku-dict-label-bg);
+    color: var(--kiku-dict-label-fg) !important;
+}
+
+/* Keep the Main Definition dictionary label in the old plain style */
+[data-dictionary="Main Definition"] .yomitan-glossary > ol > li[data-dictionary]:first-of-type > i:first-of-type {
+    background-color: transparent !important;
+    border-radius: 0;
+    padding: 0;
+    cursor: inherit;
+    color: var(--color-base-content-calm) !important;
+}
+
+/* Daijirin/Sanseido child notes: reveal content while pressing the label */
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"],
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] {
+  font-size: 0;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"]:has(> i:first-of-type:active),
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"]:has(> i:first-of-type:active) {
+  font-size: inherit;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"] > i:first-of-type,
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] > i:first-of-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"] > i:first-of-type::before,
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] > i:first-of-type::before {
+  content: "▶";
+  font-size: 0.75em;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"] > i:first-of-type ~ *,
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] > i:first-of-type ~ * {
+  display: none !important;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"] > i:first-of-type:active ~ *,
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] > i:first-of-type:active ~ * {
+  display: revert !important;
+  font-size: inherit;
+}
+
+.yomitan-glossary li[data-dictionary="大辞林　第四版"] ~ li[data-dictionary="大辞林　第四版"] > i:first-of-type:active::before,
+.yomitan-glossary li[data-dictionary="三省堂国語辞典　第八版"] ~ li[data-dictionary="三省堂国語辞典　第八版"] > i:first-of-type:active::before {
+  content: "▼";
+}
+
+/* Jitendex forms: CSS-only reveal on forms label hover, any Jitendex date */
+
+/* Container can be li or div depending on the entry */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"],
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] {
+  margin-top: 0.5em;
+}
+
+/* Remove bullet only when forms is a li */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] {
+  list-style: none;
+}
+
+/* Turn the "forms" label into a button */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"],
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Closed icon */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]::before,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]::before {
+  content: "▶";
+  font-size: 0.75em;
+}
+
+/* Hide forms content by default: table wrapper div or bullet list ul */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > div,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > div,
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > ul,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > ul {
+  display: none !important;
+}
+
+/* Show table wrapper div only while hovering over the "forms" label */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover + div,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover + div {
+  display: block !important;
+}
+
+/* Show bullet list ul only while hovering over the "forms" label */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover + ul,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover + ul {
+  display: block !important;
+}
+
+/* Open icon while hovering over the "forms" label */
+.yomitan-glossary [data-dictionary^="Jitendex"] li[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover::before,
+.yomitan-glossary [data-dictionary^="Jitendex"] div[data-sc-content="forms"] > span[data-sc-class="tag"][data-sc-content="forms-label"]:hover::before {
+  content: "▼";
+}
+
+.font-secondary {
+  visibility: hidden;
+}
+
+[data-random-font-ready="true"] .font-secondary {
+  visibility: visible;
+}
+
+/* Don't let this file be empty or Anki will not sync it */
